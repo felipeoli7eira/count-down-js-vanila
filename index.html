@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CountDown</title>
+</head>
+<body>
+    <h1 id="clock-count-down">
+        Faltam
+        <span class="clock-count-down-container">
+            <span class="count-down-days">00</span>:<span class="count-down-hours">00</span>:<span class="count-down-minutes">00</span>:<span class="count-down-seconds">00</span>
+        </span>
+        Para alguma coisa.
+    </h1>
+    <script type="module">
+        import CountDown from './CountDown.js'
+
+        // 24 December 2021 00:00:00 GMT-0300
+        // 2021-08-31 00:00:00
+        const countDown = new CountDown('2021-08-30 00:00:00')
+
+        console.log(countDown)
+        /**
+         * countDown.days
+         * countDown.hours
+         * countDown.minutes
+         * countDown.seconds
+        */
+
+        let daysFragment = document.querySelector('.count-down-days')
+        let hoursFragment = document.querySelector('.count-down-hours')
+        let minutesFragment = document.querySelector('.count-down-minutes')
+        let secondsFragment = document.querySelector('.count-down-seconds')
+
+        setInterval(() => {
+            daysFragment.innerText = countDown.format(countDown.total.days)
+            hoursFragment.innerText = countDown.format(countDown.total.hours)
+            minutesFragment.innerText = countDown.format(countDown.total.minutes)
+            secondsFragment.innerText = countDown.format(countDown.total.seconds)
+        }, 1000)
+
+    </script>
+</body>
+</html>
